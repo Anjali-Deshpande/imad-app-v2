@@ -10,7 +10,7 @@ var config = {
   password: 'db-anjali-deshpande-88012',
   database: 'anjali-deshpande',
 };
-var server;
+
 var app = express();
 app.use(morgan('combined'));
 
