@@ -2,6 +2,8 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 
+var Pool = require('pg').Pool;
+
 var app = express();
 app.use(morgan('combined'));
 
@@ -22,3 +24,10 @@ var port = 8080; // Use 8080 for local development because you might already hav
 app.listen(8080, function () {
   console.log(`IMAD course app listening on port ${port}!`);
 });
+
+
+ pool.query('SELECT COUNT(date) AS count FROM visit', function(err, result) {
+      // handle an error from the query
+      if(err) return onError(err);
+      res.writeHead(200, {'content-type': 'text/plain'});
+      res.end('You are visitor number ' + result.rows[0].count);  });
