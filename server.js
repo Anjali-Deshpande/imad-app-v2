@@ -34,7 +34,7 @@ app.listen(8080, function () {
 });
 
 
- pool.query('SELECT COUNT(date) AS count FROM visit', function(err, result) {
+ pool.query('SELECT * FROM Student', function(err, result) {
       // handle an error from the query
       if(err) return onError(err);
       res.writeHead(200, {'content-type': 'text/plain'});
