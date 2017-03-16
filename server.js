@@ -34,9 +34,14 @@ app.listen(8080, function () {
   console.log(`IMAD course app listening on port ${port}!`);
 });
 
+ var onError = function(err) {
+    console.log(err.message, err.stack);
+    res.writeHead(500, {'content-type': 'text/plain'});
+    res.end('An error occurred');
+  };
 
  pool.query('SELECT * FROM Student', function(err, result) {
       // handle an error from the query
       if(err) return onError(err);
-      res.writeHead(200, {'content-type': 'text/plain'});
-      res.end('You are visitor number ' + result.rows[0].count);  });
+      result.writeHead(200, {'content-type': 'text/plain'});
+      result.end('You are visitor number ' + result.rows[0].count);  });
