@@ -34,7 +34,7 @@ app.listen(8080, function () {
   console.log(`IMAD course app listening on port ${port}!`);
 });
 
-var server = http.createServer(function(req, res){
+var server = createServer(function(req, res){
   var onError = function(err) {
     console.log(err.message, err.stack);
     res.writeHead(500, {'content-type': 'text/plain'});
@@ -45,4 +45,4 @@ var server = http.createServer(function(req, res){
       // handle an error from the query
       if(err) return onError(err);
       result.writeHead(200, {'content-type': 'text/plain'});
-      result.end('You are visitor number ' + result.rows[0].count);  });
+      result.end('You are visitor number ' + result);  });
