@@ -10,6 +10,7 @@ var config = {
   password: 'db-anjali-deshpande-88012',
   database: 'anjali-deshpande',
 };
+var server;
 var app = express();
 app.use(morgan('combined'));
 
@@ -34,15 +35,3 @@ app.listen(8080, function () {
   console.log(`IMAD course app listening on port ${port}!`);
 });
 
-var server = createServer(function(req, res){
-  var onError = function(err) {
-    console.log(err.message, err.stack);
-    res.writeHead(500, {'content-type': 'text/plain'});
-    res.end('An error occurred');
-  }});
-
- pool.query('SELECT * FROM Student', function(err, result) {
-      // handle an error from the query
-      if(err) return onError(err);
-      result.writeHead(200, {'content-type': 'text/plain'});
-      result.end('You are visitor number ' + result);  });
