@@ -3,13 +3,21 @@ var morgan = require('morgan');
 var path = require('path');
 
 var Pool = require('pg').Pool;
-
+var config = {
+  host: 'localhost:5432',
+  user: 'anjali-deshpande',
+  password: 'db-anjali-deshpande-88012',
+  database: 'anjali-deshpande',
+};
 var app = express();
 app.use(morgan('combined'));
+
+var pool = new Pool(config);
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
+
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
